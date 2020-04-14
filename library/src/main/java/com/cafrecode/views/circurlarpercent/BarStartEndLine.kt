@@ -1,10 +1,11 @@
-package com.cafrecode.views.circurlarpercent;
+package com.cafrecode.views.circurlarpercent
 
-public enum BarStartEndLine {
+enum class BarStartEndLine {
     /**
      * No lines
      */
-    NONE, /**
+    NONE,
+    /**
      * Show Start line in Bar
      */
     START,

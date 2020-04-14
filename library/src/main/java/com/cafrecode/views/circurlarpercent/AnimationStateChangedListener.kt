@@ -1,12 +1,11 @@
-package com.cafrecode.views.circurlarpercent;
+package com.cafrecode.views.circurlarpercent
 
-public interface AnimationStateChangedListener {
-
+interface AnimationStateChangedListener {
     /**
      * Call if animation state changes.
      * This code runs in the animation loop, so keep your code short!
      *
      * @param _animationState The new animation state
      */
-    void onAnimationStateChanged(AnimationState _animationState);
+    fun onAnimationStateChanged(_animationState: AnimationState?)
 }
