@@ -205,7 +205,7 @@ public class CircleProgressView extends View {
         super(context, attrs);
 
         parseAttributes(context.obtainStyledAttributes(attrs,
-                com.mwaloni.cinch.R.styleable.CircleProgressView));
+                R.styleable.CircleProgressView));
 
         if (!isInEditMode()) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
@@ -991,140 +991,140 @@ public class CircleProgressView extends View {
      * @param a the attributes to parse
      */
     private void parseAttributes(TypedArray a) {
-        setBarWidth((int) a.getDimension(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_barWidth,
+        setBarWidth((int) a.getDimension(R.styleable.CircleProgressView_cpv_barWidth,
                 mBarWidth));
 
-        setRimWidth((int) a.getDimension(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_rimWidth,
+        setRimWidth((int) a.getDimension(R.styleable.CircleProgressView_cpv_rimWidth,
                 mRimWidth));
 
-        setSpinSpeed((int) a.getFloat(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_spinSpeed,
+        setSpinSpeed((int) a.getFloat(R.styleable.CircleProgressView_cpv_spinSpeed,
                 mSpinSpeed));
 
-        setSpin(a.getBoolean(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_spin,
+        setSpin(a.getBoolean(R.styleable.CircleProgressView_cpv_spin,
                 mSpin));
 
-        setDirection(Direction.values()[a.getInt(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_direction, 0)]);
+        setDirection(Direction.values()[a.getInt(R.styleable.CircleProgressView_cpv_direction, 0)]);
 
-        float value = a.getFloat(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_value, mCurrentValue);
+        float value = a.getFloat(R.styleable.CircleProgressView_cpv_value, mCurrentValue);
         setValue(value);
         mCurrentValue = value;
 
-        if (a.hasValue(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_barColor) && a.hasValue(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_barColor1) && a.hasValue(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_barColor2) && a.hasValue(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_barColor3)) {
-            mBarColors = new int[]{a.getColor(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_barColor, mBarColorStandard), a.getColor(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_barColor1, mBarColorStandard), a.getColor(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_barColor2, mBarColorStandard), a.getColor(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_barColor3, mBarColorStandard)};
+        if (a.hasValue(R.styleable.CircleProgressView_cpv_barColor) && a.hasValue(R.styleable.CircleProgressView_cpv_barColor1) && a.hasValue(R.styleable.CircleProgressView_cpv_barColor2) && a.hasValue(R.styleable.CircleProgressView_cpv_barColor3)) {
+            mBarColors = new int[]{a.getColor(R.styleable.CircleProgressView_cpv_barColor, mBarColorStandard), a.getColor(R.styleable.CircleProgressView_cpv_barColor1, mBarColorStandard), a.getColor(R.styleable.CircleProgressView_cpv_barColor2, mBarColorStandard), a.getColor(R.styleable.CircleProgressView_cpv_barColor3, mBarColorStandard)};
 
-        } else if (a.hasValue(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_barColor) && a.hasValue(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_barColor1) && a.hasValue(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_barColor2)) {
+        } else if (a.hasValue(R.styleable.CircleProgressView_cpv_barColor) && a.hasValue(R.styleable.CircleProgressView_cpv_barColor1) && a.hasValue(R.styleable.CircleProgressView_cpv_barColor2)) {
 
-            mBarColors = new int[]{a.getColor(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_barColor, mBarColorStandard), a.getColor(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_barColor1, mBarColorStandard), a.getColor(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_barColor2, mBarColorStandard)};
+            mBarColors = new int[]{a.getColor(R.styleable.CircleProgressView_cpv_barColor, mBarColorStandard), a.getColor(R.styleable.CircleProgressView_cpv_barColor1, mBarColorStandard), a.getColor(R.styleable.CircleProgressView_cpv_barColor2, mBarColorStandard)};
 
-        } else if (a.hasValue(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_barColor) && a.hasValue(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_barColor1)) {
+        } else if (a.hasValue(R.styleable.CircleProgressView_cpv_barColor) && a.hasValue(R.styleable.CircleProgressView_cpv_barColor1)) {
 
-            mBarColors = new int[]{a.getColor(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_barColor, mBarColorStandard), a.getColor(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_barColor1, mBarColorStandard)};
+            mBarColors = new int[]{a.getColor(R.styleable.CircleProgressView_cpv_barColor, mBarColorStandard), a.getColor(R.styleable.CircleProgressView_cpv_barColor1, mBarColorStandard)};
 
         } else {
-            mBarColors = new int[]{a.getColor(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_barColor, mBarColorStandard), a.getColor(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_barColor, mBarColorStandard)};
+            mBarColors = new int[]{a.getColor(R.styleable.CircleProgressView_cpv_barColor, mBarColorStandard), a.getColor(R.styleable.CircleProgressView_cpv_barColor, mBarColorStandard)};
         }
 
-        if (a.hasValue(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_barStrokeCap)) {
-            setBarStrokeCap(StrokeCap.values()[a.getInt(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_barStrokeCap, 0)].paintCap);
+        if (a.hasValue(R.styleable.CircleProgressView_cpv_barStrokeCap)) {
+            setBarStrokeCap(StrokeCap.values()[a.getInt(R.styleable.CircleProgressView_cpv_barStrokeCap, 0)].paintCap);
         }
 
-        if (a.hasValue(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_barStartEndLineWidth) && a.hasValue(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_barStartEndLine)) {
-            setBarStartEndLine((int) a.getDimension(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_barStartEndLineWidth, 0),
-                    BarStartEndLine.values()[a.getInt(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_barStartEndLine, 3)],
-                    a.getColor(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_barStartEndLineColor, mBarStartEndLineColor),
-                    a.getFloat(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_barStartEndLineSweep, mBarStartEndLineSweep));
+        if (a.hasValue(R.styleable.CircleProgressView_cpv_barStartEndLineWidth) && a.hasValue(R.styleable.CircleProgressView_cpv_barStartEndLine)) {
+            setBarStartEndLine((int) a.getDimension(R.styleable.CircleProgressView_cpv_barStartEndLineWidth, 0),
+                    BarStartEndLine.values()[a.getInt(R.styleable.CircleProgressView_cpv_barStartEndLine, 3)],
+                    a.getColor(R.styleable.CircleProgressView_cpv_barStartEndLineColor, mBarStartEndLineColor),
+                    a.getFloat(R.styleable.CircleProgressView_cpv_barStartEndLineSweep, mBarStartEndLineSweep));
         }
 
-        setSpinBarColor(a.getColor(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_spinColor, mSpinnerColor));
-        setSpinningBarLength(a.getFloat(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_spinBarLength,
+        setSpinBarColor(a.getColor(R.styleable.CircleProgressView_cpv_spinColor, mSpinnerColor));
+        setSpinningBarLength(a.getFloat(R.styleable.CircleProgressView_cpv_spinBarLength,
                 mSpinningBarLengthOrig));
 
-        if (a.hasValue(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_textSize)) {
-            setTextSize((int) a.getDimension(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_textSize, mTextSize));
+        if (a.hasValue(R.styleable.CircleProgressView_cpv_textSize)) {
+            setTextSize((int) a.getDimension(R.styleable.CircleProgressView_cpv_textSize, mTextSize));
         }
-        if (a.hasValue(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_unitSize)) {
-            setUnitSize((int) a.getDimension(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_unitSize, mUnitTextSize));
+        if (a.hasValue(R.styleable.CircleProgressView_cpv_unitSize)) {
+            setUnitSize((int) a.getDimension(R.styleable.CircleProgressView_cpv_unitSize, mUnitTextSize));
         }
-        if (a.hasValue(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_textColor)) {
-            setTextColor(a.getColor(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_textColor, mTextColor));
+        if (a.hasValue(R.styleable.CircleProgressView_cpv_textColor)) {
+            setTextColor(a.getColor(R.styleable.CircleProgressView_cpv_textColor, mTextColor));
         }
-        if (a.hasValue(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_unitColor)) {
-            setUnitColor(a.getColor(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_unitColor, mUnitColor));
+        if (a.hasValue(R.styleable.CircleProgressView_cpv_unitColor)) {
+            setUnitColor(a.getColor(R.styleable.CircleProgressView_cpv_unitColor, mUnitColor));
         }
-        if (a.hasValue(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_autoTextColor)) {
-            setTextColorAuto(a.getBoolean(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_autoTextColor, mIsAutoColorEnabled));
+        if (a.hasValue(R.styleable.CircleProgressView_cpv_autoTextColor)) {
+            setTextColorAuto(a.getBoolean(R.styleable.CircleProgressView_cpv_autoTextColor, mIsAutoColorEnabled));
         }
-        if (a.hasValue(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_autoTextSize)) {
-            setAutoTextSize(a.getBoolean(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_autoTextSize, mIsAutoTextSize));
+        if (a.hasValue(R.styleable.CircleProgressView_cpv_autoTextSize)) {
+            setAutoTextSize(a.getBoolean(R.styleable.CircleProgressView_cpv_autoTextSize, mIsAutoTextSize));
         }
-        if (a.hasValue(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_textMode)) {
-            setTextMode(TextMode.values()[a.getInt(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_textMode, 0)]);
+        if (a.hasValue(R.styleable.CircleProgressView_cpv_textMode)) {
+            setTextMode(TextMode.values()[a.getInt(R.styleable.CircleProgressView_cpv_textMode, 0)]);
         }
-        if (a.hasValue(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_unitPosition)) {
-            setUnitPosition(UnitPosition.values()[a.getInt(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_unitPosition, 3)]);
+        if (a.hasValue(R.styleable.CircleProgressView_cpv_unitPosition)) {
+            setUnitPosition(UnitPosition.values()[a.getInt(R.styleable.CircleProgressView_cpv_unitPosition, 3)]);
         }
         //if the mText is empty, show current percentage value
-        if (a.hasValue(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_text)) {
-            setText(a.getString(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_text));
+        if (a.hasValue(R.styleable.CircleProgressView_cpv_text)) {
+            setText(a.getString(R.styleable.CircleProgressView_cpv_text));
         }
 
-        setUnitToTextScale(a.getFloat(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_unitToTextScale, 1f));
+        setUnitToTextScale(a.getFloat(R.styleable.CircleProgressView_cpv_unitToTextScale, 1f));
 
-        setRimColor(a.getColor(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_rimColor,
+        setRimColor(a.getColor(R.styleable.CircleProgressView_cpv_rimColor,
                 mRimColor));
 
-        setFillCircleColor(a.getColor(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_fillColor,
+        setFillCircleColor(a.getColor(R.styleable.CircleProgressView_cpv_fillColor,
                 mBackgroundCircleColor));
 
-        setOuterContourColor(a.getColor(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_outerContourColor, mOuterContourColor));
-        setOuterContourSize(a.getDimension(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_outerContourSize, mOuterContourSize));
+        setOuterContourColor(a.getColor(R.styleable.CircleProgressView_cpv_outerContourColor, mOuterContourColor));
+        setOuterContourSize(a.getDimension(R.styleable.CircleProgressView_cpv_outerContourSize, mOuterContourSize));
 
-        setInnerContourColor(a.getColor(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_innerContourColor, mInnerContourColor));
-        setInnerContourSize(a.getDimension(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_innerContourSize, mInnerContourSize));
+        setInnerContourColor(a.getColor(R.styleable.CircleProgressView_cpv_innerContourColor, mInnerContourColor));
+        setInnerContourSize(a.getDimension(R.styleable.CircleProgressView_cpv_innerContourSize, mInnerContourSize));
 
-        setMaxValue(a.getFloat(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_maxValue, mMaxValue));
+        setMaxValue(a.getFloat(R.styleable.CircleProgressView_cpv_maxValue, mMaxValue));
 
-        setMinValueAllowed(a.getFloat(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_minValueAllowed, mMinValueAllowed));
-        setMaxValueAllowed(a.getFloat(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_maxValueAllowed, mMaxValueAllowed));
+        setMinValueAllowed(a.getFloat(R.styleable.CircleProgressView_cpv_minValueAllowed, mMinValueAllowed));
+        setMaxValueAllowed(a.getFloat(R.styleable.CircleProgressView_cpv_maxValueAllowed, mMaxValueAllowed));
 
-        setRoundToBlock(a.getBoolean(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_roundToBlock, mRoundToBlock));
-        setRoundToWholeNumber(a.getBoolean(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_roundToWholeNumber, mRoundToWholeNumber));
+        setRoundToBlock(a.getBoolean(R.styleable.CircleProgressView_cpv_roundToBlock, mRoundToBlock));
+        setRoundToWholeNumber(a.getBoolean(R.styleable.CircleProgressView_cpv_roundToWholeNumber, mRoundToWholeNumber));
 
-        setUnit(a.getString(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_unit));
-        setUnitVisible(a.getBoolean(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_showUnit, mShowUnit));
+        setUnit(a.getString(R.styleable.CircleProgressView_cpv_unit));
+        setUnitVisible(a.getBoolean(R.styleable.CircleProgressView_cpv_showUnit, mShowUnit));
 
-        setTextScale(a.getFloat(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_textScale, mTextScale));
+        setTextScale(a.getFloat(R.styleable.CircleProgressView_cpv_textScale, mTextScale));
         setUnitScale(a.getFloat(R.styleable.CircleProgressView_cpv_unitScale, mUnitScale));
 
-        setSeekModeEnabled(a.getBoolean(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_seekMode, mSeekModeEnabled));
+        setSeekModeEnabled(a.getBoolean(R.styleable.CircleProgressView_cpv_seekMode, mSeekModeEnabled));
 
-        setStartAngle(a.getInt(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_startAngle, mStartAngle));
+        setStartAngle(a.getInt(R.styleable.CircleProgressView_cpv_startAngle, mStartAngle));
 
-        setShowTextWhileSpinning(a.getBoolean(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_showTextInSpinningMode, mShowTextWhileSpinning));
+        setShowTextWhileSpinning(a.getBoolean(R.styleable.CircleProgressView_cpv_showTextInSpinningMode, mShowTextWhileSpinning));
 
-        if (a.hasValue(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_blockCount)) {
-            setBlockCount(a.getInt(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_blockCount, 1));
-            setBlockScale(a.getFloat(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_blockScale, 0.9f));
+        if (a.hasValue(R.styleable.CircleProgressView_cpv_blockCount)) {
+            setBlockCount(a.getInt(R.styleable.CircleProgressView_cpv_blockCount, 1));
+            setBlockScale(a.getFloat(R.styleable.CircleProgressView_cpv_blockScale, 0.9f));
         }
 
-        if (a.hasValue(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_textTypeface)) {
+        if (a.hasValue(R.styleable.CircleProgressView_cpv_textTypeface)) {
             try {
-                textTypeface = Typeface.createFromAsset(getContext().getAssets(), a.getString(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_textTypeface));
+                textTypeface = Typeface.createFromAsset(getContext().getAssets(), a.getString(R.styleable.CircleProgressView_cpv_textTypeface));
             } catch (Exception exception) {
                 // error while trying to inflate typeface (is the path set correctly?)
             }
         }
-        if (a.hasValue(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_unitTypeface)) {
+        if (a.hasValue(R.styleable.CircleProgressView_cpv_unitTypeface)) {
             try {
-                unitTextTypeface = Typeface.createFromAsset(getContext().getAssets(), a.getString(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_unitTypeface));
+                unitTextTypeface = Typeface.createFromAsset(getContext().getAssets(), a.getString(R.styleable.CircleProgressView_cpv_unitTypeface));
             } catch (Exception exception) {
                 // error while trying to inflate typeface (is the path set correctly?)
             }
         }
 
-        if (a.hasValue(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_decimalFormat)) {
+        if (a.hasValue(R.styleable.CircleProgressView_cpv_decimalFormat)) {
             try {
-                String pattern = a.getString(com.mwaloni.cinch.R.styleable.CircleProgressView_cpv_decimalFormat);
+                String pattern = a.getString(R.styleable.CircleProgressView_cpv_decimalFormat);
                 if (pattern != null) {
                     decimalFormat = new DecimalFormat(pattern);
                 }
