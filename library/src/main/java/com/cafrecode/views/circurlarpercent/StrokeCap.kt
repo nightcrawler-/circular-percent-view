@@ -1,26 +1,21 @@
-package com.cafrecode.views.circurlarpercent;
+package com.cafrecode.views.circurlarpercent
 
-import android.graphics.Paint;
+import android.graphics.Paint.Cap
 
-public enum StrokeCap {
+enum class StrokeCap(val paintCap: Cap) {
     /**
      * The stroke ends with the path, and does not project beyond it.
      */
-    BUTT(Paint.Cap.BUTT),
+    BUTT(Cap.BUTT),
     /**
      * The stroke projects out as a semicircle, with the center at the
      * end of the path.
      */
-    ROUND(Paint.Cap.ROUND),
+    ROUND(Cap.ROUND),
     /**
      * The stroke projects out as a square, with the center at the end
      * of the path.
      */
-    SQUARE(Paint.Cap.SQUARE);
+    SQUARE(Cap.SQUARE);
 
-    final Paint.Cap paintCap;
-
-    StrokeCap(Paint.Cap paintCap) {
-        this.paintCap = paintCap;
-    }
 }

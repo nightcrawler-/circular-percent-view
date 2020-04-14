@@ -81,13 +81,13 @@ class AnimationHandler internal constructor(circleView: CircleProgressView) :
                         circleView.mSpinningBarLengthCurrent =
                             mSpinningBarLengthStart - (mSpinningBarLengthStart - circleView.mSpinningBarLengthOrig) * interpolatedRatio
                     }
-                    circleView.mCurrentSpinnerDegreeValue += circleView.mSpinSpeed // spin speed value (in degree)
+                    circleView.mCurrentSpinnerDegreeValue += circleView.spinSpeed // spin speed value (in degree)
                     if (circleView.mCurrentSpinnerDegreeValue > 360) {
                         circleView.mCurrentSpinnerDegreeValue = 0f
                     }
                     sendEmptyMessageDelayed(
                         AnimationMsg.TICK.ordinal,
-                        circleView.mFrameDelayMillis - (SystemClock.uptimeMillis() - mFrameStartTime)
+                        circleView.delayMillis - (SystemClock.uptimeMillis() - mFrameStartTime)
                     )
                     circleView.invalidate()
                 }
@@ -101,7 +101,7 @@ class AnimationHandler internal constructor(circleView: CircleProgressView) :
                     }
                     sendEmptyMessageDelayed(
                         AnimationMsg.TICK.ordinal,
-                        circleView.mFrameDelayMillis - (SystemClock.uptimeMillis() - mFrameStartTime)
+                        circleView.delayMillis - (SystemClock.uptimeMillis() - mFrameStartTime)
                     )
                 }
                 AnimationMsg.STOP_SPINNING -> {
@@ -117,7 +117,7 @@ class AnimationHandler internal constructor(circleView: CircleProgressView) :
                         mLengthChangeInterpolator.getInterpolation(t)
                     circleView.mSpinningBarLengthCurrent =
                         mSpinningBarLengthStart * (1f - interpolatedRatio)
-                    circleView.mCurrentSpinnerDegreeValue += circleView.mSpinSpeed // spin speed value (not in percent)
+                    circleView.mCurrentSpinnerDegreeValue += circleView.spinSpeed // spin speed value (not in percent)
                     if (circleView.mSpinningBarLengthCurrent < 0.01f) { //end here, spinning finished
                         circleView.mAnimationState =
                             AnimationState.IDLE
@@ -129,7 +129,7 @@ class AnimationHandler internal constructor(circleView: CircleProgressView) :
                     }
                     sendEmptyMessageDelayed(
                         AnimationMsg.TICK.ordinal,
-                        circleView.mFrameDelayMillis - (SystemClock.uptimeMillis() - mFrameStartTime)
+                        circleView.delayMillis - (SystemClock.uptimeMillis() - mFrameStartTime)
                     )
                     circleView.invalidate()
                 }
@@ -150,7 +150,7 @@ class AnimationHandler internal constructor(circleView: CircleProgressView) :
                     circleView.mValueTo = (msg.obj as FloatArray)[1]
                     sendEmptyMessageDelayed(
                         AnimationMsg.TICK.ordinal,
-                        circleView.mFrameDelayMillis - (SystemClock.uptimeMillis() - mFrameStartTime)
+                        circleView.delayMillis - (SystemClock.uptimeMillis() - mFrameStartTime)
                     )
                 }
                 AnimationMsg.TICK -> {
@@ -166,7 +166,7 @@ class AnimationHandler internal constructor(circleView: CircleProgressView) :
                             mSpinningBarLengthStart * (1f - interpolatedRatio)
                     }
                     // move spinner for spin speed value (not in percent)
-                    circleView.mCurrentSpinnerDegreeValue += circleView.mSpinSpeed
+                    circleView.mCurrentSpinnerDegreeValue += circleView.spinSpeed
                     //if the start of the spinner reaches zero, start animating the value
                     if (circleView.mCurrentSpinnerDegreeValue > 360 && !circleView.mDrawBarWhileSpinning) {
                         mAnimationStartTime = System.currentTimeMillis()
@@ -181,7 +181,7 @@ class AnimationHandler internal constructor(circleView: CircleProgressView) :
                     //value is already animating, calc animation value and reduce spinner
                     if (circleView.mDrawBarWhileSpinning) {
                         circleView.mCurrentSpinnerDegreeValue = 360f
-                        circleView.mSpinningBarLengthCurrent -= circleView.mSpinSpeed
+                        circleView.mSpinningBarLengthCurrent -= circleView.spinSpeed
                         calcNextAnimationValue(circleView)
                         var t =
                             ((System.currentTimeMillis() - mLengthChangeAnimationStartTime)
@@ -209,7 +209,7 @@ class AnimationHandler internal constructor(circleView: CircleProgressView) :
                     }
                     sendEmptyMessageDelayed(
                         AnimationMsg.TICK.ordinal,
-                        circleView.mFrameDelayMillis - (SystemClock.uptimeMillis() - mFrameStartTime)
+                        circleView.delayMillis - (SystemClock.uptimeMillis() - mFrameStartTime)
                     )
                 }
             }
@@ -221,7 +221,7 @@ class AnimationHandler internal constructor(circleView: CircleProgressView) :
                 AnimationMsg.SET_VALUE_ANIMATED -> {
                     mAnimationStartTime = System.currentTimeMillis()
                     //restart animation from current value
-                    circleView.mValueFrom = circleView.mCurrentValue
+                    circleView.mValueFrom = circleView.currentValue
                     circleView.mValueTo = (msg.obj as FloatArray)[1]
                 }
                 AnimationMsg.TICK -> {
@@ -233,11 +233,11 @@ class AnimationHandler internal constructor(circleView: CircleProgressView) :
                                 circleView.mAnimationState
                             )
                         }
-                        circleView.mCurrentValue = circleView.mValueTo
+                        circleView.currentValue = circleView.mValueTo
                     }
                     sendEmptyMessageDelayed(
                         AnimationMsg.TICK.ordinal,
-                        circleView.mFrameDelayMillis - (SystemClock.uptimeMillis() - mFrameStartTime)
+                        circleView.delayMillis - (SystemClock.uptimeMillis() - mFrameStartTime)
                     )
                     circleView.invalidate()
                 }
@@ -258,7 +258,7 @@ class AnimationHandler internal constructor(circleView: CircleProgressView) :
         }
         sendEmptyMessageDelayed(
             AnimationMsg.TICK.ordinal,
-            circleView.mFrameDelayMillis - (SystemClock.uptimeMillis() - mFrameStartTime)
+            circleView.delayMillis - (SystemClock.uptimeMillis() - mFrameStartTime)
         )
     }
 
@@ -277,7 +277,7 @@ class AnimationHandler internal constructor(circleView: CircleProgressView) :
         mSpinningBarLengthStart = circleView.mSpinningBarLengthCurrent
         sendEmptyMessageDelayed(
             AnimationMsg.TICK.ordinal,
-            circleView.mFrameDelayMillis - (SystemClock.uptimeMillis() - mFrameStartTime)
+            circleView.delayMillis - (SystemClock.uptimeMillis() - mFrameStartTime)
         )
     }
 
@@ -290,15 +290,15 @@ class AnimationHandler internal constructor(circleView: CircleProgressView) :
         }
         sendEmptyMessageDelayed(
             AnimationMsg.TICK.ordinal,
-            circleView.mFrameDelayMillis - (SystemClock.uptimeMillis() - mFrameStartTime)
+            circleView.delayMillis - (SystemClock.uptimeMillis() - mFrameStartTime)
         )
     }
 
     private fun initReduceAnimation(circleView: CircleProgressView) {
         val degreesTillFinish = circleView.mSpinningBarLengthCurrent
-        val stepsTillFinish = degreesTillFinish / circleView.mSpinSpeed
+        val stepsTillFinish = degreesTillFinish / circleView.spinSpeed
         mLengthChangeAnimationDuration =
-            stepsTillFinish * circleView.mFrameDelayMillis * 2f.toDouble()
+            stepsTillFinish * circleView.delayMillis * 2f.toDouble()
         mLengthChangeAnimationStartTime = System.currentTimeMillis()
         mSpinningBarLengthStart = circleView.mSpinningBarLengthCurrent
     }
@@ -309,19 +309,19 @@ class AnimationHandler internal constructor(circleView: CircleProgressView) :
             circleView.mAnimationStateChangedListener.onAnimationStateChanged(circleView.mAnimationState)
         }
         circleView.mSpinningBarLengthCurrent =
-            360f / circleView.mMaxValue * circleView.mCurrentValue
+            360f / circleView.maxValue * circleView.currentValue
         circleView.mCurrentSpinnerDegreeValue =
-            360f / circleView.mMaxValue * circleView.mCurrentValue
+            360f / circleView.maxValue * circleView.currentValue
         mLengthChangeAnimationStartTime = System.currentTimeMillis()
         mSpinningBarLengthStart = circleView.mSpinningBarLengthCurrent
         //calc animation time
         val stepsTillFinish =
-            circleView.mSpinningBarLengthOrig / circleView.mSpinSpeed
+            circleView.mSpinningBarLengthOrig / circleView.spinSpeed
         mLengthChangeAnimationDuration =
-            (stepsTillFinish * circleView.mFrameDelayMillis * 2f).toDouble()
+            (stepsTillFinish * circleView.delayMillis * 2f).toDouble()
         sendEmptyMessageDelayed(
             AnimationMsg.TICK.ordinal,
-            circleView.mFrameDelayMillis - (SystemClock.uptimeMillis() - mFrameStartTime)
+            circleView.delayMillis - (SystemClock.uptimeMillis() - mFrameStartTime)
         )
     }
 
@@ -336,7 +336,7 @@ class AnimationHandler internal constructor(circleView: CircleProgressView) :
                 / circleView.mAnimationDuration).toFloat()
         t = if (t > 1.0f) 1.0f else t
         val interpolatedRatio = mInterpolator.getInterpolation(t)
-        circleView.mCurrentValue =
+        circleView.currentValue =
             circleView.mValueFrom + (circleView.mValueTo - circleView.mValueFrom) * interpolatedRatio
         return t >= 1
     }
@@ -344,7 +344,7 @@ class AnimationHandler internal constructor(circleView: CircleProgressView) :
     private fun setValue(msg: Message, circleView: CircleProgressView) {
         circleView.mValueFrom = circleView.mValueTo
         circleView.mValueTo = (msg.obj as FloatArray)[0]
-        circleView.mCurrentValue = circleView.mValueTo
+        circleView.currentValue = circleView.mValueTo
         circleView.mAnimationState = AnimationState.IDLE
         if (circleView.mAnimationStateChangedListener != null) {
             circleView.mAnimationStateChangedListener.onAnimationStateChanged(circleView.mAnimationState)

@@ -1,6 +1,6 @@
-package com.cafrecode.views.circurlarpercent;
+package com.cafrecode.views.circurlarpercent
 
-public enum TextMode {
+enum class TextMode {
     /**
      * Show specified text
      */
