@@ -62,3 +62,8 @@ dependencies {
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 ```
+4. Adjust in your code:
+```kotlin
+        binding.circleView.setValue(0.4f)
+        binding.circleView.setText(0.44544.round(2).toString())
+```
